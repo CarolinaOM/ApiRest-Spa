@@ -18,3 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('/service', 'ServiceController@showDescriptionSpa');
+
+Route::get('/service_time', 'ServiceController@showServiceHours');
+
+Route::post('/reservation', 'ReservationController@create');
+
+
+
+
+
+
+
+Route::get('/create-reserva/{cliente}+{servicio}', 'ServiceController@createReserva');
