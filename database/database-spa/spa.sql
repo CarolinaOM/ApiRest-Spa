@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-03-2020 a las 19:21:30
--- Versión del servidor: 10.4.11-MariaDB
+-- Tiempo de generación: 17-03-2020 a las 14:47:54
+-- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`idreserva`),
   KEY `service time` (`service_time`),
   KEY `service` (`service`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
 --
 -- Volcado de datos para la tabla `reservation`
@@ -52,7 +52,10 @@ INSERT INTO `reservation` (`idreserva`, `custome_name`, `comments`, `day_of_serv
 (3, 'Caro', 'segundo cliente', '2020-04-01', 6, 2, 20),
 (4, 'Caro', 'segundo cliente', '2020-04-01', 7, 2, 20),
 (5, 'Caro', 'segundo cliente', '2020-04-01', 18, 4, 20),
-(6, 'Carol', 'other', '2020-05-01', 1, 1, 20);
+(6, 'Carol', 'other', '2020-05-01', 1, 1, 20),
+(7, 'Carol', 'other', '2020-05-02', 1, 1, 20),
+(8, 'Mi', 'prueba', '2020-06-01', 1, 1, 20),
+(9, 'Mi', 'prueba', '2020-07-01', 1, 1, 20);
 
 -- --------------------------------------------------------
 
@@ -92,11 +95,11 @@ INSERT INTO `service` (`idservice`, `name`, `description`, `price`) VALUES
 
 DROP TABLE IF EXISTS `service_time`;
 CREATE TABLE IF NOT EXISTS `service_time` (
-  `id service time` int(11) NOT NULL AUTO_INCREMENT,
+  `id_service_time` int(11) NOT NULL AUTO_INCREMENT,
   `service` int(11) NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
-  PRIMARY KEY (`id service time`),
+  PRIMARY KEY (`id_service_time`),
   KEY `service` (`service`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;
 
@@ -104,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `service_time` (
 -- Volcado de datos para la tabla `service_time`
 --
 
-INSERT INTO `service_time` (`id service time`, `service`, `start_time`, `end_time`) VALUES
+INSERT INTO `service_time` (`id_service_time`, `service`, `start_time`, `end_time`) VALUES
 (1, 1, '10:00:00', '12:00:00'),
 (2, 1, '12:00:00', '14:00:00'),
 (3, 1, '15:00:00', '17:00:00'),
@@ -139,7 +142,7 @@ INSERT INTO `service_time` (`id service time`, `service`, `start_time`, `end_tim
 --
 ALTER TABLE `reservation`
   ADD CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`service`) REFERENCES `service` (`idservice`),
-  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`service_time`) REFERENCES `service_time` (`id service time`);
+  ADD CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`service_time`) REFERENCES `service_time` (`id_service_time`);
 
 --
 -- Filtros para la tabla `service_time`

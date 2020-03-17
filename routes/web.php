@@ -23,10 +23,9 @@ Route::get('/service_time', 'ServiceController@showServiceHours');
 
 Route::post('/reservation', 'ReservationController@create');
 
+Route::get('/service_avaliable/{date}+{service}', 'ServiceController@showAvaliable');
 
 
 
 
 
-
-Route::get('/create-reserva/{cliente}+{servicio}', 'ServiceController@createReserva');
