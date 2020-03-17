@@ -14,5 +14,7 @@
 3. Listado de las horas de cada servicio: ../service_time
 4. Listado de horas disponibles segun un fecha y servicio: ../service_avaliable/{date}+{service}
 
-**Nota:** Los valores que estan entre llaves *"{}"* significa que van a ser sustituidos por el valor que se quiera buscar 
+**Nota1:** En los endpoints los puntos *".."* antes de cada uno hacen referencia a la url donde este colocada la base de datos. Por ejemplo: http://localhost/laravel-apps/my-app/public/service 
+
+**Nota2:** Los valores que estan entre llaves *"{}"* significa que van a ser sustituidos por el valor que se quiera buscar 
 
